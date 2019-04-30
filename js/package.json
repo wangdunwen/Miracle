@@ -1,0 +1,27 @@
+{
+  "name": "miracle",
+  "version": "1.0.0",
+  "description": "自用js库",
+  "scripts": {
+    "init": "webpack --progress --colors --watch --env dev",
+    "create": "webpack --progress --colors --env dev",
+    "minifyJs": "uglifyjs lib/Miracle.js -m -o lib/Miracle.min.js",
+	  "copy": "node copy.js",
+    "build": "npm run create && npm run minifyJs && npm run copy"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.24.1",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-es2015": "6.24.1",
+    "eslint": "3.19.0",
+    "eslint-loader": "1.7.1",
+    "webpack": "2.4.1",
+    "yargs": "7.1.0"
+  },
+  "engines": {
+    "node": ">6.0.0"
+  }
+}
