@@ -1,12 +1,11 @@
 # Miracle.js接口
 
-
 ## 目录说明
 
 ```
 |-- src  
     |-- index.js
-    |-- Utils
+    |-- Modules
     |-- Error
 ```
 
@@ -14,9 +13,9 @@
   
     程序入口函数
 
-2. Utils
+2. Modules
   
-    工具类
+    模块类
 
 3. Error
 
