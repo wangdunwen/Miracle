@@ -1,10 +1,11 @@
-# Miracle.js接口
+## Miracle.js接口
 
-## 目录说明
+### 目录说明
 
 ```
 |-- src  
     |-- index.js
+    |-- Core
     |-- Modules
     |-- Error
 ```
@@ -13,10 +14,14 @@
   
     程序入口函数
 
-2. Modules
+2. Core
+  
+    核心类
+
+3. Modules
   
     模块类
 
-3. Error
+4. Error
 
     错误处理函数
