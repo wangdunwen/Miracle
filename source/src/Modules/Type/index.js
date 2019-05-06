@@ -3,51 +3,53 @@
  * Latest edited by wangdunwen on 2019/04/30.
  * 类型判断类
  */
+// 引入错误类
+import error from '../../Error/index.js';
 
 /**
- * @class TypeUtils
+ * @class Type
  * 类型判断类
  */
-const TypeUtils = function () {
+const Type = function () {
 };
 
 /*
 * 判断是否为String类型
 */
-TypeUtils.prototype.isString = function (val) {
+Type.prototype.isString = function (val) {
   return typeof val === 'string';
 };
 
 /*
 * 判断是否为Number类型
 */
-TypeUtils.prototype.isNumber = function (val) {
+Type.prototype.isNumber = function (val) {
   return typeof val === 'number';
 };
 
 /*
 * 判断是否为Undefined类型
 */
-TypeUtils.prototype.isUndefined = function (val) {
+Type.prototype.isUndefined = function (val) {
   return typeof val === 'undefined';
 };
 
 /*
 * 判断是否为Object类型
 */
-TypeUtils.prototype.isObject = function (val) {
+Type.prototype.isObject = function (val) {
   return val !== null && typeof val === 'object';
 };
 
 /**
 * @method checkType 检测字符串类型
-* @member miracle.utils
+* @member Miracle.Type
 *
 * @returns {Boolean} 返回判断的字符串。
 *
 * 同时支持扩展
 */
-TypeUtils.prototype.checkType = (function () {
+Type.prototype.checkType = (function () {
   // 已有规则
   let rules = {
     email: function (str) {
@@ -106,4 +108,4 @@ TypeUtils.prototype.checkType = (function () {
   };
 })();
 
-export default TypeUtils;
+export default new Type();

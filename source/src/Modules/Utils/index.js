@@ -4,8 +4,6 @@
  * Utils Module
  * Miracle
  */
-// 引入模块内各类
-// import TypeUtils from './TypeUtils.js';
 
 /*
 * utils工具类

@@ -1,4 +1,3 @@
-/*! miracle v1.0.0 published at Mon May 06 2019 15:06:58 GMT+0800 (CST)*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
