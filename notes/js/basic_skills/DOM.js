@@ -1,7 +1,7 @@
-/*eslint-disable*/
 /**
  * Created by WangDunWen on 2018/4/23.
- * miracle 1.0
+ * Latest edited by wangdunwen on 2019/05/06.
+ * miracle
  * DOM基础知识
  */
 
@@ -10,7 +10,8 @@
 //
 // ****************************** result ************************************
 (function (content) {
-	var div = document.createElement("div");
-	div.innerHTML = content;
+  let div = document.createElement("div");
+
+  div.innerHTML = content;
 })(content);
 // --------------------------------------------------------------------------

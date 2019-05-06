@@ -1,6 +1,6 @@
-/*eslint-disable*/
 /**
- * Created by WangDunWen on 2018/5/21.
+ * Created by wangdunwen on 2018/5/21.
+ * Latest edited by wangdunwen on 2019/05/06.
  * 适配器模式 (Adapter)
  * 设计模式(Design Patterns)
  *
@@ -13,20 +13,20 @@
  * 适配器模式常用举例：参数适配
  * 介于现在js常用传递对象的方式传递多个参数，于是可采用适配默认值的方式避免参数传递错误
  */
- let doSomething = (obj) {
+let doSomething = (obj) {
+  let _adapter = {
+    name: "名字",
+    title: "设计模式",
+    age: 24,
+    color: "pink",
+    size: 100,
+    prize: 50
+  };
 
- 	let _adapter = {
- 		name: "名字",
- 		title: "设计模式",
- 		age: 24,
- 		color: "pink",
- 		size: 100,
- 		prize: 50
- 	};
+  for (let i in _adapter) {
+    _adapter[i] = obj[i] || _adapter[i];
+  }
 
- 	for (let i in _adapter) {
- 		_adapter[i] = obj[i] || _adapter[i];
- 	}
-
- 	// ...
- }
+  // ...
+}
+ 

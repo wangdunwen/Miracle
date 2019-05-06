@@ -1,6 +1,6 @@
-/*eslint-disable*/
 /**
- * Created by WangDunWen on 2018/5/21.
+ * Created by wangdunwen on 2018/5/21.
+ * Latest edited by wangdunwen on 2019/05/06.
  * 代理模式 (Proxy)
  * 设计模式(Design Patterns)
  *
@@ -11,18 +11,18 @@
 /*
 * 利用img的src进行get请求，达到代理效果
 */
-let Count = (function() {
-	let _img = new Image();
+let Count = (function () {
+  let _img = new Image();
 
-	return function(param) {
-		let str = "http://www.count.com/a.gif?";
+  return function (param) {
+    let str = 'http://www.count.com/a.gif?';
 
-		for (let i in param) {
-			str += i + "=" + param[i];
-		}
+    for (let i in param) {
+      str += i + '=' + param[i];
+    }
 
-		_img.src = str;
-	};
+    _img.src = str;
+  };
 })();
 
 // ********************* test *****************

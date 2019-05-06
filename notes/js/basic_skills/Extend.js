@@ -1,7 +1,7 @@
-/*eslint-disable*/
 /**
- * Created by WangDunWen on 2018/4/23.
- * miracle 1.0
+ * Created by wangdunwen on 2018/4/23.
+ * Latest edited by wangdunwen on 2019/05/06.
+ * miracle
  * js实现继承的几种方式
  */
 
@@ -9,19 +9,18 @@
 * 首先创建父类
 */
 let Animal = function (name) {
+  // 属性
+  this.name = name || 'Animal';
 
-	// 属性
-	this.name = name || "Animal";
-
-	// 实例方法
-	this.sleep = function () {
-		console.log(this.name + "正在睡觉！");
-	};
+  // 实例方法
+  this.sleep = function () {
+    console.log(this.name + '正在睡觉！');
+  };
 };
 
 // 原型方法
 Animal.prototype.eat = function (food) {
-	console.log(this.name + "正在吃：" + food);
+  console.log(this.name + '正在吃：' + food);
 };
 
 // --------------------------------------------------------------------------
@@ -34,10 +33,11 @@ Animal.prototype.eat = function (food) {
 let Cat = function () {};
 
 Cat.prototype = new Animal();
-Cat.prototype.name = "cat";
+Cat.prototype.name = 'cat';
 
 // test
 let cat = new Cat();
+
 console.log(cat instanceof Animal);		// false
 console.log(cat instanceof Cat);		// true
 // --------------------------------------------------------------------------
@@ -54,12 +54,13 @@ console.log(cat instanceof Cat);		// true
 //		只能继承实例属性和方法，不能继承原型属性和方法；
 //		无法复用，每个子类都是复制的副本，影响性能
 let Cat = function (name) {
-	Animal.call(this);
-	this.name = name || "Tom";
+  Animal.call(this);
+  this.name = name || 'Tom';
 };
 
 // test
 let cat = new Cat();
+
 console.log(cat instanceof Animal);		// false
 console.log(cat instanceof Cat);		// true
 // --------------------------------------------------------------------------
@@ -73,13 +74,15 @@ console.log(cat instanceof Cat);		// true
 // 缺点：实例是父类的实例，不是子类的实例;
 //		不支持多继承
 let Cat = function (name) {
-	let instance = new Animal();
-	instance.name = name || "Tom";
-	return instance;
+  let instance = new Animal();
+
+  instance.name = name || 'Tom';
+  return instance;
 };
 
 // test
 let cat = new Cat();
+
 console.log(cat instanceof Animal);		// true
 console.log(cat instanceof Cat);		// false
 // --------------------------------------------------------------------------
@@ -92,15 +95,17 @@ console.log(cat instanceof Cat);		// false
 // 缺点：效率低，内存占用高（需要拷贝父类的属性）;
 //		无法获取父类不可枚举的属性。
 let Cat = function (name) {
-	let animal = new Animal();
-	for (let p in animal) {
-		Cat.prototype[p] = animal[p];
-	}
-	Cat.prototype.name = name || "Tom";
+  let animal = new Animal();
+
+  for (let p in animal) {
+    Cat.prototype[p] = animal[p];
+  }
+  Cat.prototype.name = name || 'Tom';
 };
 
 // test
 let cat = new Cat();
+
 console.log(cat instanceof Animal);		// false
 console.log(cat instanceof Cat);		// true
 // --------------------------------------------------------------------------
@@ -115,13 +120,15 @@ console.log(cat instanceof Cat);		// true
 // 缺点：调用了两次父类构造函数，生成两个实例，
 // 		多消耗了一点点内存;
 let Cat = function (name) {
-	Animal.call(this);
-	this.name = name || "Tom";
+  Animal.call(this);
+  this.name = name || 'Tom';
 };
+
 Cat.prototype = new Animal();
 
 // test
 let cat = new Cat();
+
 console.log(cat instanceof Animal);		// true
 console.log(cat instanceof Cat);		// true
 // --------------------------------------------------------------------------
@@ -136,24 +143,25 @@ console.log(cat instanceof Cat);		// true
 // 优点：完美。
 // 缺点：实现较为复杂
 let Cat = function (name) {
-	Animal.call(this);
-	this.name = name || "Tom";
+  Animal.call(this);
+  this.name = name || 'Tom';
 };
+
 (function () {
+  // 创建一个没有实例方法的类
+  let Super = function () {};
+  Super.prototype = Animal.prototype;
 
-	// 创建一个没有实例方法的类
-	let Super = function () {};
-	Super.prototype = Animal.prototype;
+  // 需要修复下构造函数
+  Cat.prototype.constructor = Cat;
 
-	// 需要修复下构造函数
-	Cat.prototype.constructor = Cat;
-	
-	// 将实例作为子类的原型
-	Cat.prototype = new Super();
+  // 将实例作为子类的原型
+  Cat.prototype = new Super();
 })();
 
 // test
 let cat = new Cat();
+
 console.log(cat instanceof Animal);		// true
 console.log(cat instanceof Cat);		// true
 // --------------------------------------------------------------------------

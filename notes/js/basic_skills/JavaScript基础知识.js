@@ -1,7 +1,7 @@
-/*eslint-disable*/
 /**
- * Created by WangDunWen on 2018/4/23.
- * miracle 1.0
+ * Created by wangdunwen on 2018/4/23.
+ * Latest edited by wangdunwen on 2019/05/06.
+ * miracle
  * JS基础知识
  */
 
@@ -26,16 +26,16 @@
 * 2、JS创建一个抽象方法
 *
 */
- let carAbstract = function () {};
- carAbstract.prototype = {
+let carAbstract = function () {};
 
-	getPrice: function () {
-		return new Error("抽象方法不能调用！");
-	},
-	getSpeed: function () {
-		return new Error("抽象方法不能调用！");
-	}
- }
+carAbstract.prototype = {
+  getPrice: function () {
+    return new Error("抽象方法不能调用！");
+  },
+  getSpeed: function () {
+    return new Error("抽象方法不能调用！");
+  }
+}
 
 
 /**
@@ -59,17 +59,18 @@
  * get、set：不能同时使用value、writable和get、set
  * --------------------------------------------------------------------------
  */
- let a = {};
- Object.defineProperty(a, "b", {
-	 enumerable: true,
-	 configurable: true,
-	 get: function () {
-		 // ...
-	 },
-	 set: function (value) {
-		 // ...
-	 }
- });
+let a = {};
+
+Object.defineProperty(a, "b", {
+  enumerable: true,
+  configurable: true,
+  get: function () {
+    // ...
+  },
+  set: function (value) {
+    // ...
+  }
+});
 
 
 /**
@@ -96,58 +97,58 @@
 * 5、数组或对象进行深拷贝和浅拷贝
 *
 */
+
+// 浅拷贝：仅仅是复制了引用，彼此之间的操作会互相影响
+// 深拷贝：在堆中重新分配内存，不同的地址，相同的值，互不影响
+//
+// 数组使用Array.prototype.slice()和Array.prototype.concat()进行拷贝
+// 注：这个只能算浅拷贝，如果数组里面不全是基本型，则只能拷贝引用
+
+// slice基本
+let a = [1, 2, 3, 4];
+let b = a.slice();
+console.log(a === b);    // false
+
+a[0] = 5;
+console.log(a);	// [5, 2, 3, 4]
+console.log(b);	// [1, 2, 3, 4]
+
+// concat基本
+let a1 = [1, 2, 3, 4];
+let b1 = a1.concat();
+console.log(a1 === b1);	// false
+
+a1[0] = 5;
+console.log(a1);	// [5, 2, 3, 4]
+console.log(b1);	// [1, 2, 3, 4]
+
+// slice引用
+let a2 = [[1, 2], 3, 4];
+let b2 = a2.slice();
+console.log(a2 === b2);	// false
+
+a2[0][0] = 0;
+console.log(a2);	// [[0, 2], 3, 4]
+console.log(b2);	// [[0, 2], 3, 4]
+
+// concat引用
+let a3 = [[1, 2], 3, 4];
+let b3 = a3.concat();
+console.log(a3 === b3);	// false
+
+a3[0][0] = 0;
+console.log(a3);	// [[0, 2], 3, 4]
+console.log(b3);	// [[0, 2], 3, 4]
+
+// 使用JSON.parse()和JSON。stringify()可以实现深拷贝
+// 注：缺点会过滤
+let obj = {
+  name: "test",
+  age: 29,
+  friend: {
+    name: "lee",
+    age: 19
+  }
+};
  
- // 浅拷贝：仅仅是复制了引用，彼此之间的操作会互相影响
- // 深拷贝：在堆中重新分配内存，不同的地址，相同的值，互不影响
- //
- // 数组使用Array.prototype.slice()和Array.prototype.concat()进行拷贝
- // 注：这个只能算浅拷贝，如果数组里面不全是基本型，则只能拷贝引用
-
- // slice基本
- let a = [1, 2, 3, 4];
- let b = a.slice();
- console.log(a === b);    // false
-
- a[0] = 5;
- console.log(a);	// [5, 2, 3, 4]
- console.log(b);	// [1, 2, 3, 4]
-
- // concat基本
- let a1 = [1, 2, 3, 4];
- let b1 = a1.concat();
- console.log(a1 === b1);	// false
-
- a1[0] = 5;
- console.log(a1);	// [5, 2, 3, 4]
- console.log(b1);	// [1, 2, 3, 4]
-
- // slice引用
- let a2 = [[1, 2], 3, 4];
- let b2 = a2.slice();
- console.log(a2 === b2);	// false
-
- a2[0][0] = 0;
- console.log(a2);	// [[0, 2], 3, 4]
- console.log(b2);	// [[0, 2], 3, 4]
-
- // concat引用
- let a3 = [[1, 2], 3, 4];
- let b3 = a3.concat();
- console.log(a3 === b3);	// false
-
- a3[0][0] = 0;
- console.log(a3);	// [[0, 2], 3, 4]
- console.log(b3);	// [[0, 2], 3, 4]
-
- // 使用JSON.parse()和JSON。stringify()可以实现深拷贝
- // 注：缺点会过滤
- let obj = {
- 	name: "test",
- 	age: 29,
- 	friend: {
- 		name: "lee",
- 		age: 19
- 	}
- };
- 
- let copyObj = JSON.parse(JSON.stringify(obj));
+let copyObj = JSON.parse(JSON.stringify(obj));
