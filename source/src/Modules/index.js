@@ -1,6 +1,6 @@
 /**
  * Created by wangdunwen on 2019/04/30.
- * Latest edited by wangdunwen on 2019/05/06.
+ * Latest edited by wangdunwen on 2022/05/02.
  * Modules
  * Miracle
  */
@@ -9,13 +9,12 @@ import utils from './Utils';
 import object from './Object';
 import type from './Type';
 import uuid from './Uuid';
+import data from './Data';
 
 export default {
   'Utils': utils,
-
   'Object': object,
-
   'Type': type,
-
-  'Uuid': uuid
+  'Uuid': uuid,
+  'Data': data
 };

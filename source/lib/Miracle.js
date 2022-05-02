@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -149,12 +149,76 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+/**
+* Author: @wangdunwen
+* Version : v0.0.1
+* CreateTime: 2022/05/02
+* description: 队列
+*/
 
-var _Modules = __webpack_require__(6);
+/*
+* 队列
+* 特点：FIFO 先进先出
+*/
+var Queue = function Queue() {
+  // 存储
+  this._items = [];
+};
+
+/*
+* 元素添加到队列中
+*/
+Queue.prototype.enqueue = function (element) {
+  this._items.push(element);
+};
+
+/*
+* 队列中删除前端元素
+*/
+Queue.prototype.dequeue = function () {
+  return this._items.shift();
+};
+
+/*
+* 查看前端元素
+*/
+Queue.prototype.front = function () {
+  return this._items[0];
+};
+
+/*
+* 判断队列是否为空
+*/
+Queue.prototype.isEmpty = function () {
+  return this._items.length === 0;
+};
+
+/*
+* 查看队列中元素的个数
+*/
+Queue.prototype.size = function () {
+  return this._items.length;
+};
+
+exports.default = Queue;
+module.exports = exports["default"];
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Modules = __webpack_require__(9);
 
 var _Modules2 = _interopRequireDefault(_Modules);
 
-var _package = __webpack_require__(8);
+var _package = __webpack_require__(11);
 
 var _package2 = _interopRequireDefault(_package);
 
@@ -206,7 +270,127 @@ exports.default = Miracle;
 module.exports = exports['default'];
 
 /***/ }),
-/* 2 */
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _queue = __webpack_require__(1);
+
+var _queue2 = _interopRequireDefault(_queue);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+* 事件队列
+* 特点：FIFO 先进先出
+*/
+var EventQueue = function EventQueue() {
+  // 存储
+  this._eventQueue = new _queue2.default();
+};
+
+/*
+* 元素添加到队列中
+*/
+/**
+* Author: @wangdunwen
+* Version : v0.0.1
+* CreateTime: 2022/05/02
+* description: 事件队列
+*/
+EventQueue.prototype.enqueue = function (fn) {
+  return this._eventQueue.enqueue(fn);
+};
+
+/*
+* 队列中删除前端元素
+*/
+EventQueue.prototype.dequeue = function () {
+  return this._eventQueue.dequeue();
+};
+
+/*
+* 执行队首事件
+*/
+EventQueue.prototype.excute = function () {
+  // 取出队首事件，并运行
+  this._eventQueue.front()();
+
+  // 移除队首事件
+  return this._eventQueue.dequeue();
+};
+
+/*
+* 判断队列是否为空
+*/
+EventQueue.prototype.isEmpty = function () {
+  return this._items.length === 0;
+};
+
+/*
+* 查看队列中元素的个数
+*/
+EventQueue.prototype.size = function () {
+  return this._items.length;
+};
+
+exports.default = EventQueue;
+module.exports = exports['default'];
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _queue = __webpack_require__(1);
+
+var _queue2 = _interopRequireDefault(_queue);
+
+var _event_queue = __webpack_require__(3);
+
+var _event_queue2 = _interopRequireDefault(_event_queue);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @class miracle.data
+ * 数据结构
+ */
+/**
+ * Created by wangdunwen on 2022/05/02.
+ * Latest edited by wangdunwen on 2022/05/02.
+ * miracle
+ * data类
+ */
+// 引入错误类
+// import error from '../../Error/index.js';
+
+// 引入队列
+var Data = function Data() {
+  // 绑定队列
+  this.Queue = _queue2.default;
+
+  // 绑定事件队列
+  this.EventQueue = _event_queue2.default;
+};
+
+exports.default = new Data();
+module.exports = exports['default'];
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -324,7 +508,7 @@ exports.default = new ObjectClass();
 module.exports = exports['default'];
 
 /***/ }),
-/* 3 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -462,7 +646,7 @@ exports.default = new Type();
 module.exports = exports['default'];
 
 /***/ }),
-/* 4 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -487,7 +671,7 @@ exports.default = new Utils();
 module.exports = exports["default"];
 
 /***/ }),
-/* 5 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -524,7 +708,7 @@ exports.default = new Uuid();
 module.exports = exports['default'];
 
 /***/ }),
-/* 6 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -534,50 +718,52 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Utils = __webpack_require__(4);
+var _Utils = __webpack_require__(7);
 
 var _Utils2 = _interopRequireDefault(_Utils);
 
-var _Object = __webpack_require__(2);
+var _Object = __webpack_require__(5);
 
 var _Object2 = _interopRequireDefault(_Object);
 
-var _Type = __webpack_require__(3);
+var _Type = __webpack_require__(6);
 
 var _Type2 = _interopRequireDefault(_Type);
 
-var _Uuid = __webpack_require__(5);
+var _Uuid = __webpack_require__(8);
 
 var _Uuid2 = _interopRequireDefault(_Uuid);
 
+var _Data = __webpack_require__(4);
+
+var _Data2 = _interopRequireDefault(_Data);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * Created by wangdunwen on 2019/04/30.
- * Latest edited by wangdunwen on 2019/05/06.
- * Modules
- * Miracle
- */
-// 引入各个模块
 exports.default = {
   'Utils': _Utils2.default,
-
   'Object': _Object2.default,
-
   'Type': _Type2.default,
+  'Uuid': _Uuid2.default,
+  'Data': _Data2.default
+}; /**
+    * Created by wangdunwen on 2019/04/30.
+    * Latest edited by wangdunwen on 2022/05/02.
+    * Modules
+    * Miracle
+    */
+// 引入各个模块
 
-  'Uuid': _Uuid2.default
-};
 module.exports = exports['default'];
 
 /***/ }),
-/* 7 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _index = __webpack_require__(1);
+var _index = __webpack_require__(2);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -597,7 +783,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
              */
 
 /***/ }),
-/* 8 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = {"name":"miracle","version":"1.0.0","description":"自用js库","scripts":{"init":"webpack --progress --colors --watch --env dev","create":"webpack --progress --colors --env dev","minifyJs":"uglifyjs lib/Miracle.js -m -o lib/Miracle.min.js","copy":"node copy.js","build":"npm run create && npm run minifyJs && npm run copy"},"devDependencies":{"babel-cli":"6.24.1","babel-core":"6.24.1","babel-eslint":"7.2.3","babel-loader":"7.0.0","babel-plugin-add-module-exports":"0.2.1","babel-preset-es2015":"6.24.1","eslint":"3.19.0","eslint-loader":"1.7.1","webpack":"2.4.1","yargs":"7.1.0"},"engines":{"node":">6.0.0"}}
