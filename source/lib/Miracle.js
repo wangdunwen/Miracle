@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -214,11 +214,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Modules = __webpack_require__(9);
+var _Modules = __webpack_require__(11);
 
 var _Modules2 = _interopRequireDefault(_Modules);
 
-var _package = __webpack_require__(11);
+var _package = __webpack_require__(13);
 
 var _package2 = _interopRequireDefault(_package);
 
@@ -400,6 +400,77 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _promise = __webpack_require__(6);
+
+var _promise2 = _interopRequireDefault(_promise);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @class miracle._internal
+ * 内部开发工具类
+ */
+var Internal = function Internal() {
+  // 异步函数
+  this._promise = new _promise2.default();
+}; /**
+    * Created by wangdunwen on 2022/05/02.
+    * Latest edited by wangdunwen on 2022/05/02.
+    * miracle
+    * 开发工具类
+    */
+
+// 引入队列
+exports.default = new Internal();
+module.exports = exports['default'];
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+* Author: @wangdunwen
+* Version : v0.0.1
+* CreateTime: 2022/04/26
+* description: promise 函数封装
+*/
+var _Promise = function _Promise() {};
+
+/*
+* deffer
+* 分配函数
+*/
+_Promise.prototype.deffer = function () {
+  var deferred = {};
+
+  deferred.promise = new Promise(function (resolve, reject) {
+    deferred.resolve = resolve;
+    deferred.reject = reject;
+  });
+
+  return deferred;
+};
+
+exports.default = _Promise;
+module.exports = exports["default"];
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
                                                                                                                                                                                                                                                                                * Created by wangdunwen on 2018/4/17.
                                                                                                                                                                                                                                                                                * Latest edited by wangdunwen on 2019/05/06.
@@ -508,7 +579,7 @@ exports.default = new ObjectClass();
 module.exports = exports['default'];
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -646,7 +717,7 @@ exports.default = new Type();
 module.exports = exports['default'];
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -671,7 +742,7 @@ exports.default = new Utils();
 module.exports = exports["default"];
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -708,7 +779,7 @@ exports.default = new Uuid();
 module.exports = exports['default'];
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -718,19 +789,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Utils = __webpack_require__(7);
+var _Internal = __webpack_require__(5);
+
+var _Internal2 = _interopRequireDefault(_Internal);
+
+var _Utils = __webpack_require__(9);
 
 var _Utils2 = _interopRequireDefault(_Utils);
 
-var _Object = __webpack_require__(5);
+var _Object = __webpack_require__(7);
 
 var _Object2 = _interopRequireDefault(_Object);
 
-var _Type = __webpack_require__(6);
+var _Type = __webpack_require__(8);
 
 var _Type2 = _interopRequireDefault(_Type);
 
-var _Uuid = __webpack_require__(8);
+var _Uuid = __webpack_require__(10);
 
 var _Uuid2 = _interopRequireDefault(_Uuid);
 
@@ -740,24 +815,25 @@ var _Data2 = _interopRequireDefault(_Data);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Created by wangdunwen on 2019/04/30.
+ * Latest edited by wangdunwen on 2022/05/02.
+ * Modules
+ * Miracle
+ */
+// 引入各个模块
 exports.default = {
+  '_internal': _Internal2.default,
   'Utils': _Utils2.default,
   'Object': _Object2.default,
   'Type': _Type2.default,
   'Uuid': _Uuid2.default,
   'Data': _Data2.default
-}; /**
-    * Created by wangdunwen on 2019/04/30.
-    * Latest edited by wangdunwen on 2022/05/02.
-    * Modules
-    * Miracle
-    */
-// 引入各个模块
-
+};
 module.exports = exports['default'];
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -783,7 +859,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
              */
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = {"name":"miracle","version":"1.0.0","description":"自用js库","scripts":{"init":"webpack --progress --colors --watch --env dev","create":"webpack --progress --colors --env dev","minifyJs":"uglifyjs lib/Miracle.js -m -o lib/Miracle.min.js","copy":"node copy.js","build":"npm run create && npm run minifyJs && npm run copy"},"devDependencies":{"babel-cli":"6.24.1","babel-core":"6.24.1","babel-eslint":"7.2.3","babel-loader":"7.0.0","babel-plugin-add-module-exports":"0.2.1","babel-preset-es2015":"6.24.1","eslint":"3.19.0","eslint-loader":"1.7.1","webpack":"2.4.1","yargs":"7.1.0"},"engines":{"node":">6.0.0"}}
