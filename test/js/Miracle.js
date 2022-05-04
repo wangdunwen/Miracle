@@ -1,4 +1,4 @@
-/*! miracle v1.0.0 published at Wed May 04 2022 21:44:51 GMT+0800 (中国标准时间)*/
+/*! miracle v1.0.0 published at Wed May 04 2022 22:09:42 GMT+0800 (中国标准时间)*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -739,8 +739,22 @@ Object.defineProperty(exports, "__esModule", {
 */
 var Utils = function Utils() {};
 
+/*
+* 创建唯一的uuid
+* 注：len 为创建的位数
+*/
+Utils.prototype.createUUID = function (len) {
+  var alps = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var s = [];
+
+  for (var i = 0; i < len; i++) {
+    s[i] = alps.substr(Math.floor(Math.random() * 62), 1);
+  }
+  return s.join('');
+};
+
 exports.default = new Utils();
-module.exports = exports["default"];
+module.exports = exports['default'];
 
 /***/ }),
 /* 10 */

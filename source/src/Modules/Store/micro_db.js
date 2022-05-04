@@ -5,6 +5,7 @@
 * description: 数据半持久化存储 MircoDB
 */
 import error from '../../Error'
+import utils from '../Utils'
 import promise from '../Internal/promise.js'
 
 /*
@@ -113,7 +114,7 @@ MircoDB.prototype.createTable = function (tableName) {
 */
 MircoDB.prototype.add = function (tableName, object) {
   let deffer = this._gm._internal._promise.deffer()
-  let uuid = this._gm.utils.createUUID(8)
+  let uuid = utils.createUUID(8)
   let request
 
   // 添加主键

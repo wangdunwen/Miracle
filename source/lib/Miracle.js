@@ -738,8 +738,22 @@ Object.defineProperty(exports, "__esModule", {
 */
 var Utils = function Utils() {};
 
+/*
+* 创建唯一的uuid
+* 注：len 为创建的位数
+*/
+Utils.prototype.createUUID = function (len) {
+  var alps = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var s = [];
+
+  for (var i = 0; i < len; i++) {
+    s[i] = alps.substr(Math.floor(Math.random() * 62), 1);
+  }
+  return s.join('');
+};
+
 exports.default = new Utils();
-module.exports = exports["default"];
+module.exports = exports['default'];
 
 /***/ }),
 /* 10 */
