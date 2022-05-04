@@ -22,4 +22,4 @@ _Promise.prototype.deffer = function () {
   return deferred
 }
 
-export default _Promise
+export default new _Promise()

@@ -1,4 +1,4 @@
-/*! miracle v1.0.0 published at Tue May 03 2022 10:48:58 GMT+0800 (中国标准时间)*/
+/*! miracle v1.0.0 published at Wed May 04 2022 21:44:51 GMT+0800 (中国标准时间)*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -401,9 +401,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(6);
+var _promise2 = __webpack_require__(6);
 
-var _promise2 = _interopRequireDefault(_promise);
+var _promise3 = _interopRequireDefault(_promise2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -413,7 +413,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var Internal = function Internal() {
   // 异步函数
-  this._promise = new _promise2.default();
+  this._promise = _promise3.default;
 }; /**
     * Created by wangdunwen on 2022/05/02.
     * Latest edited by wangdunwen on 2022/05/02.
@@ -458,7 +458,7 @@ _Promise.prototype.deffer = function () {
   return deferred;
 };
 
-exports.default = _Promise;
+exports.default = new _Promise();
 module.exports = exports["default"];
 
 /***/ }),

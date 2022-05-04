@@ -400,9 +400,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _promise = __webpack_require__(6);
+var _promise2 = __webpack_require__(6);
 
-var _promise2 = _interopRequireDefault(_promise);
+var _promise3 = _interopRequireDefault(_promise2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -412,7 +412,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 var Internal = function Internal() {
   // 异步函数
-  this._promise = new _promise2.default();
+  this._promise = _promise3.default;
 }; /**
     * Created by wangdunwen on 2022/05/02.
     * Latest edited by wangdunwen on 2022/05/02.
@@ -457,7 +457,7 @@ _Promise.prototype.deffer = function () {
   return deferred;
 };
 
-exports.default = _Promise;
+exports.default = new _Promise();
 module.exports = exports["default"];
 
 /***/ }),

@@ -6,7 +6,7 @@
  */
 
 // 引入队列
-import _Promise from './promise.js'
+import _promise from './promise.js'
 
 /**
  * @class miracle._internal
@@ -14,7 +14,7 @@ import _Promise from './promise.js'
  */
 const Internal = function () {
   // 异步函数
-  this._promise = new _Promise()
+  this._promise = _promise
 };
 
 export default new Internal();
